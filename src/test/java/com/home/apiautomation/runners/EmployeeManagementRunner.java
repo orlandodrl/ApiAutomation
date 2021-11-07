@@ -6,9 +6,9 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/test_cucumber.feature",
+        features = "src/test/resources/features/employee_management",
         glue = "com.home.apiautomation.stepdefinitions",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
-public class RunnerTest {
+public class EmployeeManagementRunner {
 }
