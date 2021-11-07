@@ -1,0 +1,11 @@
+package com.home.apiautomation;
+
+public class HelloWorld {
+
+    public static void main(String[] args) {
+
+        System.out.println("Hola mundo");
+
+    }
+
+}
