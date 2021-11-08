@@ -8,6 +8,7 @@ Feature: Create employees
       |      name       |       salary      |       age      |
       | <employee_name> | <employee_salary> | <employee_age> |
     Then the response code should be 200
+    And the structure of the response is correct with "data/employees/CreationEmployeeSchema.json"
     And the message in the response should be "Successfully! Record has been added."
     When he consults an employee by the id saved
     Then the response code should be 200
@@ -17,6 +18,6 @@ Feature: Create employees
 
     Examples:
     | employee_name  | employee_salary | employee_age |
-    | Orlando        | 2000            | 27           |
+    | Teo            | 2000            | 27           |
 
 #PENDING: FAILED SCENARIOS

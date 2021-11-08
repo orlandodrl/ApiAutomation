@@ -12,8 +12,8 @@ public class TheEmployee implements Question<Employee> {
     public Employee answeredBy(Actor actor) {
         JsonPath jsonPath = SerenityRest.lastResponse().jsonPath();
         return Employee.builder().name(jsonPath.getString("data.employee_name"))
-                .age(jsonPath.getInt("data.employee_age"))
-                .salary(jsonPath.getInt("data.employee_salary"))
+                .age(jsonPath.getString("data.employee_age"))
+                .salary(jsonPath.getString("data.employee_salary"))
                 .build();
     }
 

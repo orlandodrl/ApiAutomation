@@ -1,4 +1,4 @@
-package com.home.apiautomation.runners;
+package com.home.apiautomation.runners.employeemanagement;
 
 import io.cucumber.junit.CucumberOptions;
 import net.serenitybdd.cucumber.CucumberWithSerenity;
@@ -10,5 +10,5 @@ import org.junit.runner.RunWith;
         glue = "com.home.apiautomation.stepdefinitions",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )
-public class EmployeeManagementRunner {
+public class DeletionEmployeesRunner {
 }

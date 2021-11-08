@@ -1,6 +1,6 @@
 package com.home.apiautomation.stepdefinitions;
 
-import com.home.apiautomation.exceptions.CommonException;
+import com.home.apiautomation.exceptions.CommonAssertion;
 import com.home.apiautomation.model.Employee;
 import com.home.apiautomation.questions.TheEmployee;
 import com.home.apiautomation.tasks.ConsultAllEmployees;
@@ -29,7 +29,7 @@ public class ConsultEmployeesStepDefinition {
         theActorInTheSpotlight().should(
                 seeThatResponse("The response code should be: " + responseCode,
                         response -> response.statusCode(responseCode))
-                        .orComplainWith(CommonException.class, UNEXPECTED_RESPONSE_CODE.getMessage()));
+                        .orComplainWith(CommonAssertion.class, UNEXPECTED_RESPONSE_CODE.getMessage()));
     }
 
     @And("the message in the response should be {string}")
@@ -37,7 +37,7 @@ public class ConsultEmployeesStepDefinition {
         theActorInTheSpotlight().should(
                 seeThatResponse("The message in the response should be: " + message,
                         response -> response.body("message", equalTo(message)))
-                        .orComplainWith(CommonException.class, UNEXPECTED_MESSAGE.getMessage()));
+                        .orComplainWith(CommonAssertion.class, UNEXPECTED_MESSAGE.getMessage()));
     }
 
     @And("the structure of the response is correct with {string}")
@@ -45,7 +45,7 @@ public class ConsultEmployeesStepDefinition {
         theActorInTheSpotlight().should(
                 seeThatResponse("The response obtained must comply with the defined structure",
                         response -> response.assertThat().body(matchesJsonSchemaInClasspath(jsonSchema)))
-                        .orComplainWith(CommonException.class, UNEXPECTED_STRUCTURE.getMessage()));
+                        .orComplainWith(CommonAssertion.class, UNEXPECTED_STRUCTURE.getMessage()));
     }
 
     @When("he consults an employee by the id {int}")
@@ -57,11 +57,9 @@ public class ConsultEmployeesStepDefinition {
 
     @And("and see that the data queried is correct")
     public void andSeeThatTheDataQueriedIsCorrect(Employee employeeExpected) {
-        System.out.println("Estoy aqui");
-        System.out.println(employeeExpected.toString());
         theActorInTheSpotlight().should(
                 seeThat(TheEmployee.consulted(), equalTo(employeeExpected))
-                        .orComplainWith(CommonException.class, INCORRECT_VALUES.getMessage())
+                        .orComplainWith(CommonAssertion.class, INCORRECT_VALUES.getMessage())
         );
     }
 

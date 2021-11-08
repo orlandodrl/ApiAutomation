@@ -21,7 +21,7 @@ public class CommonStepsDefinition {
 
     @DataTableType
     public Employee employee(Map<String, String> employeeInformation) {
-        return Employee.builder().name(employeeInformation.get("name")).salary(Integer.valueOf(employeeInformation.get("salary"))).age(Integer.valueOf(employeeInformation.get("age"))).build();
+        return Employee.builder().name(employeeInformation.get("name")).salary(employeeInformation.get("salary")).age(employeeInformation.get("age")).build();
     }
 
     @Before
