@@ -1,4 +1,3 @@
-#encoding:utf-8
 #Author: orlandodavid9512@gmail.com
 
 Feature: Consult employees
@@ -15,12 +14,13 @@ Feature: Consult employees
     Then the response code should be 200
     And the message in the response should be "Successfully! Record has been fetched."
     And and see that the data queried is correct
-      | employee_name    | <employee_name>   |
-      | employee_salary  | <employee_salary> |
-      | employee_age     | <employee_age>    |
+      |      name       |       salary      |       age      |
+      | <employee_name> | <employee_salary> | <employee_age> |
     And the structure of the response is correct with "data/employees/ConsultAnEmployeeSchema.json"
 
     Examples:
     | id | employee_name | employee_salary | employee_age |
     | 1  | Tiger Nixon   | 320800          | 61           |
 
+
+#PENDING: FAILED SCENARIOS

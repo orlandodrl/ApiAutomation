@@ -1,13 +1,13 @@
 package com.home.apiautomation.stepdefinitions;
 
 import com.home.apiautomation.exceptions.CommonException;
-import com.home.apiautomation.questions.AttributeValues;
+import com.home.apiautomation.model.Employee;
+import com.home.apiautomation.questions.TheEmployee;
 import com.home.apiautomation.tasks.ConsultAllEmployees;
 import com.home.apiautomation.tasks.ConsultEmployee;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import java.util.Map;
 import static com.home.apiautomation.exceptions.ExceptionMessages.*;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
@@ -20,7 +20,7 @@ public class ConsultEmployeesStepDefinition {
     @When("he consults all employees")
     public void consultingTheSecondGroupOfThreeUsers() {
         theActorInTheSpotlight().attemptsTo(
-                ConsultAllEmployees.registered()
+            ConsultAllEmployees.registered()
         );
     }
 
@@ -51,15 +51,17 @@ public class ConsultEmployeesStepDefinition {
     @When("he consults an employee by the id {int}")
     public void heConsultsAnEmployeeByTheId(int id) {
         theActorInTheSpotlight().attemptsTo(
-                ConsultEmployee.byId(id)
+            ConsultEmployee.byId(id)
         );
     }
 
     @And("and see that the data queried is correct")
-    public void andSeeThatTheDataQueriedIsCorrect(Map<String, String> expectedValues) {
+    public void andSeeThatTheDataQueriedIsCorrect(Employee employeeExpected) {
+        System.out.println("Estoy aqui");
+        System.out.println(employeeExpected.toString());
         theActorInTheSpotlight().should(
-                seeThat(AttributeValues.areEqualsTo(expectedValues), equalTo(true))
-                        .orComplainWith(CommonException.class, UNEXPECTED_STRUCTURE.getMessage())
+                seeThat(TheEmployee.consulted(), equalTo(employeeExpected))
+                        .orComplainWith(CommonException.class, INCORRECT_VALUES.getMessage())
         );
     }
 

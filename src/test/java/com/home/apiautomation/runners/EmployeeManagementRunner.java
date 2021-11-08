@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @RunWith(CucumberWithSerenity.class)
 @CucumberOptions(
-        features = "src/test/resources/features/employee_management",
+        features = "src/test/resources/features/employee_management/deletion_employees.feature",
         glue = "com.home.apiautomation.stepdefinitions",
         snippets = CucumberOptions.SnippetType.CAMELCASE
 )

@@ -4,7 +4,8 @@ public enum ExceptionMessages {
 
     UNEXPECTED_RESPONSE_CODE("The response code obtained is not the expected code"),
     UNEXPECTED_MESSAGE("The message in the response obtained is not the expected message"),
-    UNEXPECTED_STRUCTURE("The response structure obtained is not the expected structure");
+    UNEXPECTED_STRUCTURE("The response structure obtained is not the expected structure"),
+    INCORRECT_VALUES("The response values are not correct.");
 
     private String message;
 
